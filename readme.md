@@ -2,6 +2,10 @@
 
 ILogger that logs into a mssql database.
 
+```
+$ dotnet add package glowing-telegram
+```
+
 ## How to use
 Add the logger to the `Program.cs`.
 
