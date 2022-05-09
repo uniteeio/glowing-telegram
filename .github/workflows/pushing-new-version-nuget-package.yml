@@ -31,5 +31,8 @@ jobs:
           dotnet build -c Release -p:Version=${RELEASE_VERSION}
           dotnet pack -c Release -p:Version=${RELEASE_VERSION} -o out
 
+      - run: |
+          ls -R ./
+
       - name: Push generated package
         run: dotnet nuget push /home/runner/work/glowing-telegram/out/*.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols true
