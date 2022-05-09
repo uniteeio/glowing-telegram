@@ -1,0 +1,28 @@
+version: "3.4"
+
+services:
+  telegram:
+    image: techunitee/dotnet6.0-node14-arm
+    command: tail -f /dev/null
+    volumes:
+      - ../..:/app
+      - $HOME/.ssh:/root/.ssh
+      - nuget-data:/root/.nuget
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+    ports:
+      - "7600:7600"
+    working_dir: /app/glowing-telegram
+    networks:
+      - dev_network
+    user: "1000:1000"
+
+networks:
+  dev_network:
+    external:
+      name: dev_network
+
+volumes:
+  nuget-data:
+  vscode:
