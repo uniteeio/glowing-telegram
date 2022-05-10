@@ -80,7 +80,7 @@ app.UseMiddleware<ErrorHandlerMiddleware>(myImplementation);
 ```sql
 CREATE TABLE [dbo].[Logs](
 	[Id] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
-	[Message] [nvarchar](255) NULL,
+	[Message] [nvarchar](max) NULL,
 	[LogLevel] [nvarchar](50) NULL,
 	[Extra] [nvarchar](max) NULL,
 	[CreatedAt] [datetime2](7) NULL,
