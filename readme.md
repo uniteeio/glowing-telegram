@@ -89,6 +89,12 @@ CREATE TABLE [dbo].[Logs](
 )
 ```
 
+## Migrations to v2.0.0
+
+```sql
+ALTER TABLE [dbo].[Logs] ADD [ExceptionType] NVARCHAR(max)
+```
+
 ## Join with your tables to extract data
 
 ```sql
