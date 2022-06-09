@@ -84,7 +84,8 @@ CREATE TABLE [dbo].[Logs](
 	[LogLevel] [nvarchar](50) NULL,
 	[Extra] [nvarchar](max) NULL,
 	[CreatedAt] [datetime2](7) NULL,
-	[StackTrace] [nvarchar](max) NULL
+	[StackTrace] [nvarchar](max) NULL,
+	[ExceptionType] [nvarchar](max) NULL
 )
 ```
 

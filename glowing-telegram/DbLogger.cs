@@ -55,12 +55,13 @@ public sealed class DbLogger : ILogger
                 _ => null
             };
 
-            conn.Execute("INSERT INTO Logs (Message, LogLevel, Extra, CreatedAt, StackTrace) VALUES (@message, @logLevel, @extra, GETUTCDATE(), @stackTrace)", new
+            conn.Execute("INSERT INTO Logs (Message, LogLevel, Extra, CreatedAt, StackTrace, ExceptionType) VALUES (@message, @logLevel, @extra, GETUTCDATE(), @stackTrace, @exceptionType)", new
             {
                 message = formatter(state, interestingException),
                 logLevel = logLevel.ToString(),
                 extra,
-                stackTrace = interestingException?.StackTrace
+                stackTrace = interestingException?.StackTrace,
+                exceptionType = interestingException?.GetType().Name,
             });
 
             if (config.MaxDays > 0)
