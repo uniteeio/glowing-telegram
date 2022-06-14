@@ -22,7 +22,17 @@ public sealed class DbLogger : ILogger
 
     public IDisposable BeginScope<TState>(TState state) => default!;
 
-    public bool IsEnabled(LogLevel logLevel) => _getCurrentConfig().ConnectionString is not null;
+    public bool IsEnabled(LogLevel logLevel)
+    {
+        var config = _getCurrentConfig();
+        if (config.ConnectionString is null)
+            return false;
+
+        if (logLevel < config.MinimumLogLevel)
+            return false;
+
+        return _getCurrentConfig().ConnectionString is not null;
+    }
 
     public void Log<TState>(
         LogLevel logLevel,
