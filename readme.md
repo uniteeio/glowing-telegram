@@ -87,7 +87,7 @@ CREATE TABLE [dbo].[Logs](
 	[CreatedAt] [datetime2](7) NULL,
 	[StackTrace] [nvarchar](max) NULL,
 	[ExceptionType] [nvarchar](max) NULL,
-    [ServiceName] [nvarchar](max) NULL,
+	[ServiceName] [nvarchar](max) NULL,
 )
 ```
 
