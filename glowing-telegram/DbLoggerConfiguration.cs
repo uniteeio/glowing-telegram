@@ -6,4 +6,5 @@ public class DbLoggerConfiguration
     public int EventId { get; set; }
     public string ConnectionString { get; set; }
     public int MaxDays { get; set; } = -1;
+    public string ServiceName { get; set; } = null;
 }
