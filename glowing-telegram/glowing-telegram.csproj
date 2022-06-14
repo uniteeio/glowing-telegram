@@ -4,9 +4,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>DbLogger</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
+    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
+   <None Include="logo/logo.png" Pack="true" PackagePath="" />
+
+
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />

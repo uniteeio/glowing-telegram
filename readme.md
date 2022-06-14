@@ -1,6 +1,6 @@
 # Glowing telegram
 
-![](./logo/logo.png)
+![](./glowing-telegram/logo/logo.png)
 
 ILogger that logs into a mssql database.
 
