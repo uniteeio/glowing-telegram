@@ -49,7 +49,7 @@ Use the special `Extra` property of the `ApplicationException` to add extra opti
 
 ```cs
 var MyException = new ApplicationException("Oops something went wrong", new { myExtraProperty = "MyValue" });
-_logger.LogError(MyExeception, "Something went wrong", null);
+_logger.LogError(MyException, "Something went wrong", null);
 ```
 
 ## Use the global handler to log all exceptions
