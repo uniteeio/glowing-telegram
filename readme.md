@@ -25,6 +25,7 @@ builder.Logging.AddDbLogger(configuration =>
 configuration.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 configuration.MaxDays = 7; // Keep the logs for 7 days (-1 = never delete logs)
 configuration.ServiceName = "MyService"; // The name of the service
+configuration.MinimumLogLevel = LogLevel.Warning; // Minimum log level
 ```
 
 ## Use the logger
