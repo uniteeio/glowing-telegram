@@ -28,6 +28,38 @@ configuration.ServiceName = "MyService"; // The name of the service
 configuration.MinimumLogLevel = LogLevel.Warning; // Minimum log level
 ```
 
+## In Azure Function
+
+```cs
+[assembly: FunctionsStartup(typeof(Namespace.Function.Startup))]
+namespace Housebase.Function;
+
+public class Startup : FunctionsStartup
+{
+    public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+    {
+       // ...
+    }
+
+
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        var configuration = builder.GetContext().Configuration;
+        var dbConn = configuration.GetSection("ConnectionStrings").GetValue<string>("Db");
+
+        builder.Services.AddLogging(builder =>
+        {
+            builder.AddDbLogger(configuration =>
+            {
+                configuration.ConnectionString = dbConn;
+                configuration.MaxDays = 7;
+                configuration.ServiceName = "MyService";
+            });
+        });
+    }
+}
+```
+
 ## Use the logger
 
 Use this logger like any other.
