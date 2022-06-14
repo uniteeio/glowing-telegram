@@ -22,6 +22,7 @@ builder.Logging.AddDbLogger(configuration =>
 ```cs
 configuration.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 configuration.MaxDays = 7; // Keep the logs for 7 days (-1 = never delete logs)
+configuration.ServiceName = "MyService"; // The name of the service
 ```
 
 ## Use the logger
@@ -85,7 +86,8 @@ CREATE TABLE [dbo].[Logs](
 	[Extra] [nvarchar](max) NULL,
 	[CreatedAt] [datetime2](7) NULL,
 	[StackTrace] [nvarchar](max) NULL,
-	[ExceptionType] [nvarchar](max) NULL
+	[ExceptionType] [nvarchar](max) NULL,
+    [ServiceName] [nvarchar](max) NULL,
 )
 ```
 
@@ -93,6 +95,12 @@ CREATE TABLE [dbo].[Logs](
 
 ```sql
 ALTER TABLE [dbo].[Logs] ADD [ExceptionType] NVARCHAR(max)
+```
+
+## Migrations to v3.0.0
+
+```sql
+ALTER TABLE [dbo].[Logs] ADD [ServiceName] NVARCHAR(max)
 ```
 
 ## Join with your tables to extract data
